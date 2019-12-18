@@ -2,10 +2,43 @@
 
 {% block title %}Stages par entreprise{% endblock %}
 
-{% block body %}
-
-
-<div class="example-wrapper">
-    <h1>Voici la liste des stages triés par entreprise : </h1>
-</div>
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="#">Formations</a>
+	</li>
+	<li class="nav-item active">
+		<a class="nav-link" href="#">Entreprises</a>
+	</li>
 {% endblock %}
+
+{% block titrePage %} Voici la liste des stages triés par entrepise : {% endblock %} 
+
+{% block baliseTr %}
+	<tr>
+		<td>
+			1
+		</td>
+		<td>
+			Developpement d'une application avec Symfony
+		</td>
+		<td>
+			DUT Info <br> LP Programmation avancée
+		</td>
+		<td>
+			Thalès  
+		</td>
+		<td>
+			<a href="#">
+				Sur l'entreprise 
+			</a>
+			<br>
+			<a href="#">
+				Sur le stage 
+			</a>
+		</td>
+	</tr>
+{% endblock %}
+
