@@ -4,13 +4,13 @@
 
 {% block pageActive %}
 	<li class="nav-item active">
-		<a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="#">Formations</a>
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="#">Entreprises</a>
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
 	</li>
 {% endblock %}
 
@@ -35,7 +35,7 @@
 				Sur l'entreprise 
 			</a>
 			<br>
-			<a href="#">
+			<a href="{{path('ProStages_stageAvecId',{'id':1})}}">
 				Sur le stage 
 			</a>
 		</td>

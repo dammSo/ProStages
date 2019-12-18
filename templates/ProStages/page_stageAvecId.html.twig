@@ -1,9 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Stages avec ID{% endblock %}
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
+	</li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id':id})}}">Stage</a>
+	</li>
 
+{% endblock %}
+
+{% block titrePage %} Voici le stage n°{{id}} : {% endblock %} 
 {% block body %}
-
 <div class="example-wrapper">
     <h1>Cette page affichera le descriptif du stage ayant pour identifiant : {{id}} </h1>
 </div>

@@ -35,7 +35,7 @@ class ProStagesController extends AbstractController
         ]);
     }
     /**
-     * @Route("/stages/{id}", name="ProStages")
+     * @Route("/stages/{id}", name="ProStages_stageAvecId")
      */
     public function page_stageAvecId($id)
     {
