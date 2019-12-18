@@ -11,8 +11,8 @@
 	<li class="nav-item">
 		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
 	</li>
-    <li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id':id})}}">Stage</a>
+    <li class="nav-item active">
+		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id':id})}}">Stage n°{{id}}</a>
 	</li>
 
 {% endblock %}
@@ -20,6 +20,7 @@
 {% block titrePage %} Voici le stage n°{{id}} : {% endblock %} 
 {% block body %}
 <div class="example-wrapper">
-    <h1>Cette page affichera le descriptif du stage ayant pour identifiant : {{id}} </h1>
+    <h3>Cette page affichera le descriptif du stage ayant pour identifiant : {{id}} </h3>
 </div>
 {% endblock %}
+

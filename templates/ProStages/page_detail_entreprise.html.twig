@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{entreprise}}{% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
+	</li>
+    <li class="nav-item active">
+		<a class="nav-link" href="{{path('ProStages_detail_entreprise',{'entreprise':'entreprise'})}}"> {{entreprise}}</a>
+	</li>
+{% endblock %}
+
+{% block titrePage %} 
+	<div class="row" style="margin-bottom: 65px;">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				{{entreprise}}
+			</h3>
+		</div>
+	</div>
+{% endblock %} 
+{% block body %}
+  	  <div class="container-fluid">
+			<div class="row">
+				<div class="col-md-4">
+					<address>
+						<strong>Nom de l'entreprise</strong><br />Son adresse<br />Code postal et ville	<br />
+					</address>
+				</div>
+				<div class="col-md-4">
+					<h2>
+						Activité principale de l'entreprise :
+					</h2>
+					<p>
+						Entrer l'activité
+					</p>
+				</div>
+				<div class="col-md-4">
+					<h2>
+						Contact
+					</h2>
+					<p>
+						Entrez le mail
+					</p>
+				</div>
+			</div>
+			<div class="row" style="margin-top: 165px;">
+				<div class="col-md-12">
+					<p>
+						<a href="{{path('ProStages_stageAvecId',{'id':1})}}">
+							Liste des stages concernants cette entreprise.
+						</a>				
+					</p>
+				</div>
+			</div>
+		</div>
+{% endblock %}

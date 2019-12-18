@@ -43,5 +43,14 @@ class ProStagesController extends AbstractController
             'controller_name' => 'ProStagesController', 'id' => $id
         ]);
     }
-
+    
+    /**
+     * @Route("/detail_entreprise/{entreprise}", name="ProStages_detail_entreprise")
+     */
+    public function page_detail_entreprise($entreprise)
+    {
+        return $this->render('ProStages/page_detail_entreprise.html.twig', [
+            'controller_name' => 'ProStagesController', 'entreprise' => $entreprise
+        ]);
+    }
 }
