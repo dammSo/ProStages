@@ -12,15 +12,59 @@
 		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
 	</li>
     <li class="nav-item active">
-		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id':id})}}">Stage n°{{id}}</a>
+		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id': id})}}">Stage n°{{id}}</a>
 	</li>
 
 {% endblock %}
 
-{% block titrePage %} Voici le stage n°{{id}} : {% endblock %} 
+{% block titrePage %}
+	<div class="row" style="margin-bottom: 65px;">
+		<div class="col-md-12">
+			<h3 class="text-center">
+				nom du stage
+			</h3>
+		</div>
+	</div>
+{% endblock %} 
+
 {% block body %}
-<div class="example-wrapper">
-    <h3>Cette page affichera le descriptif du stage ayant pour identifiant : {{id}} </h3>
-</div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-4">
+				<h2>
+					Description du stage :
+				</h2>
+				<p>
+					lalalala			
+				</p>	
+			</div>
+			<div class="col-md-4">
+				<h2>
+					Formations concernées : 
+				</h2>
+				<p>
+					Afficher les formations
+				</p>
+			</div>
+			<div class="col-md-4">
+				<h2>
+					Entreprise
+				</h2>
+				<p>
+					<a class="nav-link" href="#">Recuperer le nom de l'entrep</a>
+				</p>
+			</div>
+		</div>
+		<div class="row" style="margin-top: 165px;">
+			<div class="col-md-12">
+				<h2>
+					Contact
+				</h2>
+				<p>
+					<a href='#'>Recuperer le mail de contact</a>				
+				</p>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 

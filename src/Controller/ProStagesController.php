@@ -5,6 +5,10 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Stage;
+use App\Entity\Entrepise;
+use App\Entity\Formation;
+
 class ProStagesController extends AbstractController
 {
     /**
@@ -39,8 +43,11 @@ class ProStagesController extends AbstractController
      */
     public function page_stageAvecId($id)
     {
+        $unStage = $this->getDoctrine()->getRepository(Stage::class);
+        $stage = $unStage->findOneById($id);
+        
         return $this->render('ProStages/page_stageAvecId.html.twig', [
-            'controller_name' => 'ProStagesController', 'id' => $id
+            'controller_name' => 'ProStagesController', 'stage' => $stage, 'id' => $id
         ]);
     }
     
