@@ -7,39 +7,42 @@
 		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item active">
-		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
 	</li>
 {% endblock %}
 
 {% block titrePage %} Voici la liste des stages triés par formation : {% endblock %} 
 
 {% block baliseTr %}
+	{% for stage in listeStages %}
 	<tr>
 		<td>
-			1
+			{{stage.id}}
 		</td>
 		<td>
-			Developpement d'une application avec Symfony
+			{{stage.titre}}
 		</td>
 		<td>
-			<li type="square"> DUT Info </li>
-			<li type="square"> LP Programmation avancée </li>
+			{% for formation in stage.formations %}
+				<li type="square"> {{formation.libelle}}  </li>
+			{% endfor %}
 		</td>
 		<td>
-			Thalès  
+			{{stage.entreprise.nom}}
 		</td>
 		<td>
-			<a href="{{path('ProStages_detail_entreprise' , {'entreprise': 'Thalès'})}}">
+			<a href="{{path('ProStages_detail_entreprise' , {'entreprise': stage.entreprise.nom})}}">
 				Sur l'entreprise 
 			</a>
 			<br>
-			<a href="{{path('ProStages_stageAvecId',{'id':1})}}">
+			<a href="{{path('ProStages_stageAvecId',{'id':stage.id})}}">
 				Sur le stage 
 			</a>
 		</td>
 	</tr>
+	{% endfor %}
 {% endblock %}
 

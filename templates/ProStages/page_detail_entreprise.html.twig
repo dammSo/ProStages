@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{entreprise}}{% endblock %}
+{% block title %}{{entreprise.nom}}{% endblock %}
 
 {% block pageActive %}
 	<li class="nav-item">
 		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
 	</li>
     <li class="nav-item active">
-		<a class="nav-link" href="{{path('ProStages_detail_entreprise',{'entreprise':'entreprise'})}}"> {{entreprise}}</a>
+		<a class="nav-link" href="{{path('ProStages_detail_entreprise',{'entreprise':entreprise.nom})}}"> {{entreprise.nom}}</a>
 	</li>
 {% endblock %}
 
@@ -21,7 +21,7 @@
 	<div class="row" style="margin-bottom: 65px;">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				{{entreprise}}
+				{{entreprise.nom}}
 			</h3>
 		</div>
 	</div>
@@ -31,32 +31,25 @@
 			<div class="row">
 				<div class="col-md-4">
 					<address>
-						<strong>Nom de l'entreprise</strong><br />Son adresse<br />Code postal et ville	<br />
+						<strong>{{entreprise.nom}}</strong><br />{{entreprise.adresse}}<br />
 					</address>
 				</div>
 				<div class="col-md-4">
-					<h2>
+					<h5>
 						Activité principale de l'entreprise :
-					</h2>
+					</h5>
 					<p>
-						Entrer l'activité
+						{{entreprise.activite}}
 					</p>
 				</div>
 				<div class="col-md-4">
-					<h2>
+					<h5>
 						Contact
-					</h2>
+					</h5>
 					<p>
-						Entrez le mail
-					</p>
-				</div>
-			</div>
-			<div class="row" style="margin-top: 165px;">
-				<div class="col-md-12">
-					<p>
-						<a href="{{path('ProStages_stageAvecId',{'id':1})}}">
-							Liste des stages concernants cette entreprise.
-						</a>				
+							<a href="{{entreprise.site}}">
+								{{entreprise.site}}
+							</a>
 					</p>
 				</div>
 			</div>

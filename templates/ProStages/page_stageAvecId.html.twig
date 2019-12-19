@@ -6,10 +6,10 @@
 		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_formations')}}">Formations</a>
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Entreprises</a>
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
 	</li>
     <li class="nav-item active">
 		<a class="nav-link" href="{{path('ProStages_stageAvecId',{'id': id})}}">Stage n°{{id}}</a>
@@ -21,7 +21,7 @@
 	<div class="row" style="margin-bottom: 65px;">
 		<div class="col-md-12">
 			<h3 class="text-center">
-				nom du stage
+				{{stage.titre}}
 			</h3>
 		</div>
 	</div>
@@ -35,7 +35,7 @@
 					Description du stage :
 				</h2>
 				<p>
-					lalalala			
+					{{stage.Description}}			
 				</p>	
 			</div>
 			<div class="col-md-4">
@@ -43,7 +43,9 @@
 					Formations concernées : 
 				</h2>
 				<p>
-					Afficher les formations
+				{% for formation in stage.formations %}
+					<li type="square"> {{formation.libelle}}  </li>
+				{% endfor %}
 				</p>
 			</div>
 			<div class="col-md-4">
@@ -51,7 +53,7 @@
 					Entreprise
 				</h2>
 				<p>
-					<a class="nav-link" href="#">Recuperer le nom de l'entrep</a>
+					<a class="nav-link" href="{{path('ProStages_detail_entreprise' , {'entreprise': stage.entreprise.nom})}}"> {{stage.entreprise.nom}} </a>
 				</p>
 			</div>
 		</div>
@@ -61,7 +63,7 @@
 					Contact
 				</h2>
 				<p>
-					<a href='#'>Recuperer le mail de contact</a>				
+					{{stage.mail}}			
 				</p>
 			</div>
 		</div>

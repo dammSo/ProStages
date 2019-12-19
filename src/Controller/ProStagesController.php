@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\Stage;
-use App\Entity\Entrepise;
+use App\Entity\Entreprise;
 use App\Entity\Formation;
 
 class ProStagesController extends AbstractController
@@ -21,11 +21,11 @@ class ProStagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Recuperation des ressource en BD
-        $stages = $repositoryStage->findAll();
+        $listeStages = $repositoryStage->findAll();
         
         //Envoi des données à la vue
         return $this->render('ProStages/index.html.twig', [
-            'controller_name' => 'ProStagesController', 'stages' => $stages
+            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
         ]);
     }
    /**
@@ -33,8 +33,19 @@ class ProStagesController extends AbstractController
      */
     public function page_entreprises()
     {
+         //Recuperer le repository
+         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+         //Recuperation des ressource en BD
+         $listeStages = $repositoryStage->findAll();
+    
+         //Tri de la liste récupéré
+         
+
+
+
         return $this->render('ProStages/page_entreprises.html.twig', [
-            'controller_name' => 'ProStagesController',
+            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
         ]);
     }
     /**
@@ -42,8 +53,19 @@ class ProStagesController extends AbstractController
      */
     public function page_formations()
     {
-        return $this->render('ProStages/page_formations.html.twig', [
-            'controller_name' => 'ProStagesController',
+        
+         //Recuperer le repository
+         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+         //Recuperation des ressource en BD
+         $listeStages = $repositoryStage->findALL();
+
+         //Tri de la liste récupérée
+         
+        
+
+         return $this->render('ProStages/page_formations.html.twig', [
+            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
         ]);
     }
     /**
@@ -64,8 +86,14 @@ class ProStagesController extends AbstractController
      */
     public function page_detail_entreprise($entreprise)
     {
+         //Recuperer le repository
+         $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+         //Recuperation des ressource en BD
+         $listeEntreprises = $repositoryEntreprise->findOneByNom($entreprise);
+
         return $this->render('ProStages/page_detail_entreprise.html.twig', [
-            'controller_name' => 'ProStagesController', 'entreprise' => $entreprise
+            'controller_name' => 'ProStagesController', 'entreprise' => $listeEntreprises
         ]);
     }
 }
