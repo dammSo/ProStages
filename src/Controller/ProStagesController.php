@@ -11,13 +11,21 @@ use App\Entity\Formation;
 
 class ProStagesController extends AbstractController
 {
+    
     /**
      * @Route("/", name="ProStages_acceuil")
      */
     public function index()
     {
+        //Recuperer le repository
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+
+        //Recuperation des ressource en BD
+        $stages = $repositoryStage->findAll();
+        
+        //Envoi des données à la vue
         return $this->render('ProStages/index.html.twig', [
-            'controller_name' => 'ProStagesController',
+            'controller_name' => 'ProStagesController', 'stages' => $stages
         ]);
     }
    /**
@@ -43,8 +51,8 @@ class ProStagesController extends AbstractController
      */
     public function page_stageAvecId($id)
     {
-        $unStage = $this->getDoctrine()->getRepository(Stage::class);
-        $stage = $unStage->findOneById($id);
+        $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+        $stage = $repositoryStage->findOneById($id);
         
         return $this->render('ProStages/page_stageAvecId.html.twig', [
             'controller_name' => 'ProStagesController', 'stage' => $stage, 'id' => $id
