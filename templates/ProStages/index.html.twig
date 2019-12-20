@@ -16,6 +16,28 @@
 
 {% block titrePage %} Voici la liste des stages : {% endblock %} 
 
+{% block affichageTab %}
+	<thead>
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				Titre
+			</th>
+			<th>
+				Formations Concernées
+			</th>
+			<th>
+				Entreprise
+			</th>
+			<th>
+				Pour plus d'informations
+			</th>
+		</tr>
+	</thead>
+{% endblock %} 
+
 {% block baliseTr %}
 	{% for stage in listeStages %}
 	<tr>

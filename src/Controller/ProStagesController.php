@@ -34,18 +34,13 @@ class ProStagesController extends AbstractController
     public function page_entreprises()
     {
          //Recuperer le repository
-         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+         $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
 
          //Recuperation des ressource en BD
-         $listeStages = $repositoryStage->findAll();
-    
-         //Tri de la liste récupéré
-         
-
-
+         $listeEntreprises = $repositoryEntreprise->findAll();
 
         return $this->render('ProStages/page_entreprises.html.twig', [
-            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
+            'controller_name' => 'ProStagesController', 'listeEntreprise' => $listeEntreprises
         ]);
     }
     /**
@@ -55,17 +50,14 @@ class ProStagesController extends AbstractController
     {
         
          //Recuperer le repository
-         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+         $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
 
          //Recuperation des ressource en BD
-         $listeStages = $repositoryStage->findALL();
-
-         //Tri de la liste récupérée
+         $listeFormation = $repositoryFormation->findALL();
          
-        
 
          return $this->render('ProStages/page_formations.html.twig', [
-            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
+            'controller_name' => 'ProStagesController', 'listeFormation' => $listeFormation
         ]);
     }
     /**
@@ -94,6 +86,42 @@ class ProStagesController extends AbstractController
 
         return $this->render('ProStages/page_detail_entreprise.html.twig', [
             'controller_name' => 'ProStagesController', 'entreprise' => $listeEntreprises
+        ]);
+    }
+    /**
+     * @Route("/stagesParFormation/{idFormation}", name="ProStages_stageParFormation")
+     */
+    public function page_stageParFormation($idFormation)
+    {
+        
+        //Recuperer le repository
+        $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+
+        //Recuperation des ressource en BD
+        $formation = $repositoryFormation->findOneById($idFormation);
+        $listeStages = $formation->getStages();
+     
+
+         return $this->render('ProStages/page_stageParFormation.html.twig', [
+            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
+        ]);
+    }
+     /**
+     * @Route("/stagesParEntreprise/{idEntreprise}", name="ProStages_stagesParEntreprise")
+     */
+    public function page_stagesParEntreprise($idEntreprise)
+    {
+        
+        //Recuperer le repository
+        $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+
+        //Recuperation des ressource en BD
+        $entreprise = $repositoryEntreprise->findOneById($idEntreprise);
+        $listeStages = $entreprise->getStages();
+     
+
+         return $this->render('ProStages/page_stageParEntreprise.html.twig', [
+            'controller_name' => 'ProStagesController', 'listeStages' => $listeStages
         ]);
     }
 }

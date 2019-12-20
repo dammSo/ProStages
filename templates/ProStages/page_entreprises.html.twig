@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Stages par entreprise{% endblock %}
+{% block title %}Entreprises{% endblock %}
 
 {% block pageActive %}
 	<li class="nav-item">
@@ -14,33 +14,49 @@
 	</li>
 {% endblock %}
 
-{% block titrePage %} Voici la liste des stages triés par entreprise : {% endblock %} 
+{% block titrePage %} Voici la liste des entreprises : {% endblock %} 
+
+{% block affichageTab %}
+	<thead>
+		<tr>
+			<th>
+				Nom
+			</th>
+			<th>
+				Activité
+			</th>
+			<th>
+				Adresse
+			</th>
+			<th>
+				Site
+			</th>
+			<th>
+				<!-- //Vide volontaire pour affichage plus propre-->
+			</th>
+		</tr>
+	</thead>
+{% endblock %} 
 
 {% block baliseTr %}
-	{% for stage in listeStages %}
+	{% for entreprise in listeEntreprise %}
 	<tr>
 		<td>
-			{{stage.id}}
+			{{entreprise.nom}}
 		</td>
 		<td>
-			{{stage.titre}}
+			{{entreprise.activite}}
 		</td>
 		<td>
-			{% for formation in stage.formations %}
-				<li type="square"> {{formation.libelle}}  </li>
-			{% endfor %}
+			{{entreprise.adresse}}
 		</td>
 		<td>
-			{{stage.entreprise.nom}}
-		</td>
-		<td>
-			<a href="{{path('ProStages_detail_entreprise' , {'entreprise': stage.entreprise.nom})}}">
-				Sur l'entreprise 
+			<a href="{{entreprise.site}}">
+				{{entreprise.site}}
 			</a>
-			<br>
-			<a href="{{path('ProStages_stageAvecId',{'id':stage.id})}}">
-				Sur le stage 
-			</a>
+		</td>
+		<td>
+			<a class="nav-link" href="{{path('ProStages_stagesParEntreprise', {'idEntreprise' : entreprise.id})}}">Liste des stages</a>
 		</td>
 	</tr>
 	{% endfor %}

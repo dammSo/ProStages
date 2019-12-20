@@ -29,25 +29,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th>
-                                    ID
-                                </th>
-                                <th>
-                                    Titre
-                                </th>
-                                <th>
-                                    Formations Concernées
-                                </th>
-                                <th>
-                                    Entreprise
-                                </th>
-                                <th>
-                                    Pour plus d'informations
-                                </th>
-                            </tr>
-                        </thead>
+                        {% block affichageTab %}
+                        Entrer les titres
+                        {% endblock %}
                         <tbody>
                             {% block baliseTr %}
                             
