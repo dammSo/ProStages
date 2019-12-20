@@ -14,19 +14,16 @@
 	</li>
 {% endblock %}
 
-{% block titrePage %} Voici la liste des entreprises : {% endblock %} 
+{% block titrePage %}  {% endblock %} 
 
 {% block affichageTab %}
 	<thead>
 		<tr>
 			<th>
-				Nom
+				Nom 
 			</th>
 			<th>
 				Activité
-			</th>
-			<th>
-				Adresse
 			</th>
 			<th>
 				Site
@@ -42,13 +39,12 @@
 	{% for entreprise in listeEntreprise %}
 	<tr>
 		<td>
-			{{entreprise.nom}}
+			<a href="{{path('ProStages_detail_entreprise' , {'entreprise': entreprise.nom})}}" style="color:#000000;">
+					<font size="+1">{{entreprise.nom}}</font>
+			</a>
 		</td>
 		<td>
 			{{entreprise.activite}}
-		</td>
-		<td>
-			{{entreprise.adresse}}
 		</td>
 		<td>
 			<a href="{{entreprise.site}}">

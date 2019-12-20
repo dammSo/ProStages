@@ -14,20 +14,12 @@
 	</li>
 {% endblock %}
 
-{% block titrePage %} Voici la liste des formations : {% endblock %} 
+{% block titrePage %} {% endblock %} 
 
 {% block affichageTab %}
 	<thead>
 		<tr>
-			<th>
-				Libellé
-			</th>
-			<th>
-				Nom complet
-			</th>
-			<th>
 				<!-- //Vide volontaire pour affichage plus propre-->
-			</th>
 		</tr>
 	</thead>
 {% endblock %} 
@@ -36,13 +28,7 @@
 	{% for formation in listeFormation %}
 	<tr>
 		<td>
-			{{formation.libelle}}
-		</td>
-		<td>
-			{{formation.nomComplet}}
-		</td>
-		<td>
-			<a class="nav-link" href="{{path('ProStages_stageParFormation', {'idFormation' : formation.id})}}">Liste des stages</a>
+			<a class="nav-link" href="{{path('ProStages_stageParFormation', {'idFormation' : formation.id})}}">{{formation.libelle}} - {{formation.nomComplet}} </a>
 		</td>
 	</tr>
 	{% endfor %}
