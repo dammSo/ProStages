@@ -6,12 +6,15 @@
 	<li class="nav-item">
 		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
 	</li>
-	<li class="nav-item active">
+	<li class="nav-item">
 		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
 	</li>
-	<li class="nav-item">
+	<li class="nav-item active">
 		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
 	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+    </li>
 {% endblock %}
 
 {% block titrePage %} Voici la liste des stages pour l'entreprise demandée : {% endblock %} 

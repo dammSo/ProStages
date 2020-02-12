@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une entreprise{% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
+    </li>
+    <li class="nav-item active">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+    </li>
+    
+{% endblock %}
+
+{% block titrePage %} Ajout d'une nouvelle entreprise {% endblock %} 
+
+{% block affichageTab %}  {% endblock %} 
+
+{% block baliseTr %} 
+	{{form_start(vueFormulaireAjout)}}
+		{{form_row(vueFormulaireAjout.id)}}
+		{{form_row(vueFormulaireAjout.nom)}}
+		{{form_row(vueFormulaireAjout.activite)}}
+		{{form_row(vueFormulaireAjout.adresse)}}
+		{{form_row(vueFormulaireAjout.site)}}
+	{{form_end(vueFormulaireAjout)}}
+{% endblock %}
