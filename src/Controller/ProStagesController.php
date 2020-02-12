@@ -4,6 +4,10 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\HttpFoundation\Request;
+
 
 use App\Entity\Stage;
 use App\Entity\Entreprise;
@@ -123,19 +127,34 @@ class ProStagesController extends AbstractController
     /**
      * @Route("/ajoutEntreprise", name="ProStages_ajoutEntreprise")
      */
-    public function page_ajout_entreprise()
+    public function page_ajout_entreprise(Request $request)
     {
          //Création de la ressource vierge
          $ajout = new Entreprise();
+         
+         //Définition de l'object manager
+         $manager = $this->getDoctrine()->getManager();
 
          //Création de l'objet formulaire
          $formulaireAjout = $this -> createFormBuilder($ajout)
-                                  -> add('id')
-                                  -> add('nom')
-                                  -> add('activite')
-                                  -> add('adresse')
-                                  -> add('site')
+                                  -> add('nom', TextType::class)
+                                  -> add('activite', TextType::class)
+                                  -> add('adresse', TextType::class)
+                                  -> add('site', UrlType::class)
                                   -> getForm(); 
+        
+        //Enregistrer après soumission,les données dans l'objet $entreprise
+        $formulaireAjout->handleRequest($request);
+
+        if($formulaireAjout->isSubmitted())
+        {
+            //On enregistre l'entrprise en BD
+            $manager -> persist($ajout);
+            $manager -> flush();
+
+            //On redirige l'utilisateur vers la page qui liste toutes les entreprises
+            return $this->redirect($this->generateUrl('ProStages_entreprises'));
+        }
         
         //Creation de la vue
         $vueFormulaireAjout = $formulaireAjout -> createView();

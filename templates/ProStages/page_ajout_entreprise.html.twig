@@ -24,10 +24,10 @@
 
 {% block baliseTr %} 
 	{{form_start(vueFormulaireAjout)}}
-		{{form_row(vueFormulaireAjout.id)}}
 		{{form_row(vueFormulaireAjout.nom)}}
 		{{form_row(vueFormulaireAjout.activite)}}
 		{{form_row(vueFormulaireAjout.adresse)}}
 		{{form_row(vueFormulaireAjout.site)}}
+		<button type="submit" class="btn">Valider</button>
 	{{form_end(vueFormulaireAjout)}}
 {% endblock %}
