@@ -29,9 +29,6 @@
 				Titre
 			</th>
 			<th>
-				Formations Concernées
-			</th>
-			<th>
 				Entreprise
 			</th>
 			<th>
@@ -49,11 +46,6 @@
 		</td>
 		<td>
 			{{stage.titre}}
-		</td>
-		<td>
-			{% for formation in stage.formations %}
-				<li type="square"> {{formation.libelle}}  </li>
-			{% endfor %}
 		</td>
 		<td>
 			{{stage.entreprise.nom}}  

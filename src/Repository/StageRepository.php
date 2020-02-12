@@ -51,6 +51,22 @@ class StageRepository extends ServiceEntityRepository
                     return $requete->execute();
                     
     }
+    public function fetchStageEtEntreprise()
+    {
+        //Récuperation du gestionnaire d'entité
+        $gestionnaireEntite = $this->getEntityManager();
+
+        //Construction de la requète
+        $requete = $gestionnaireEntite->createQuery(
+                    'SELECT s,e,f
+                    FROM App\Entity\Stage s
+                    JOIN s.entreprise e
+                    JOIN s.formations f
+                    ORDER BY s.id');
+        
+            return $requete->execute();
+                    
+    }
     
 
     /*

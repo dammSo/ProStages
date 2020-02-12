@@ -21,7 +21,7 @@ class ProStagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Recuperation des ressource en BD
-        $listeStages = $repositoryStage->findAll();
+        $listeStages = $repositoryStage->fetchStageEtEntreprise();
         
         //Envoi des données à la vue
         return $this->render('ProStages/index.html.twig', [
