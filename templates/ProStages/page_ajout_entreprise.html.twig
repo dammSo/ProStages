@@ -23,11 +23,45 @@
 {% block affichageTab %}  {% endblock %} 
 
 {% block baliseTr %} 
-	{{form_start(vueFormulaireAjout)}}
-		{{form_row(vueFormulaireAjout.nom)}}
-		{{form_row(vueFormulaireAjout.activite)}}
-		{{form_row(vueFormulaireAjout.adresse)}}
-		{{form_row(vueFormulaireAjout.site)}}
-		<button type="submit" class="btn">Valider</button>
-	{{form_end(vueFormulaireAjout)}}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			{{ form_start (vueFormulaireAjout) }}
+				<div>
+						{{ form_label (vueFormulaireAjout.nom) }} 
+						{{ form_errors (vueFormulaireAjout.nom) }}
+				<br> 
+						{{ form_widget (vueFormulaireAjout.nom, {'attr':{'placeholder':"Nom de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireAjout.activite) }} 
+						{{ form_errors (vueFormulaireAjout.activite) }} 
+				<br>
+						{{ form_widget (vueFormulaireAjout.activite, {'attr':{'placeholder':"Activité de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireAjout.adresse) }} 
+						{{ form_errors (vueFormulaireAjout.adresse) }}
+				<br> 
+						{{ form_widget (vueFormulaireAjout.adresse, {'attr':{'placeholder':"Adresse de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireAjout.site) }} 
+						{{ form_errors (vueFormulaireAjout.site) }} 
+				<br>
+						{{ form_widget (vueFormulaireAjout.site, {'attr':{'placeholder':"Lien du site de l'entreprise"}}) }} 
+					
+				</div>
+				<br>
+				<div>
+					<button type="submit" class="btn btn-success">Ajouter</button>
+				</div>
+			{{ form_end (vueFormulaireAjout) }}        
+
+		</div>
+	</div>
+</div>
 {% endblock %}
