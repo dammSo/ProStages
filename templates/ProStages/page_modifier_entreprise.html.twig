@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'une entreprise{% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
+    </li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+	</li>	
+	<li class="nav-item active">
+		<a class="nav-link">Modification de l'entreprise</a>
+    </li>
+{% endblock %}
+
+{% block titrePage %} Modifier l'entreprise {% endblock %} 
+
+{% block affichageTab %}  {% endblock %} 
+
+{% block baliseTr %} 
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			{{ form_start (vueFormulaireEntreprise) }}
+				<div>
+						{{ form_label (vueFormulaireEntreprise.nom) }} 
+						{{ form_errors (vueFormulaireEntreprise.nom) }}
+				<br> 
+						{{ form_widget (vueFormulaireEntreprise.nom, {'attr':{'placeholder':"Nom de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireEntreprise.activite) }} 
+						{{ form_errors (vueFormulaireEntreprise.activite) }} 
+				<br>
+						{{ form_widget (vueFormulaireEntreprise.activite, {'attr':{'placeholder':"Activité de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireEntreprise.adresse) }} 
+						{{ form_errors (vueFormulaireEntreprise.adresse) }}
+				<br> 
+						{{ form_widget (vueFormulaireEntreprise.adresse, {'attr':{'placeholder':"Adresse de l'entreprise"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireEntreprise.site) }} 
+						{{ form_errors (vueFormulaireEntreprise.site) }} 
+				<br>
+						{{ form_widget (vueFormulaireEntreprise.site, {'attr':{'placeholder':"Lien du site de l'entreprise"}}) }} 
+					
+				</div>
+				<br>
+				<div>
+					<button type="submit" class="btn btn-success">Modifier</button>
+				</div>
+			{{ form_end (vueFormulaireEntreprise) }}        
+
+		</div>
+	</div>
+</div>
+{% endblock %}

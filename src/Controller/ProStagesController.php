@@ -163,4 +163,39 @@ class ProStagesController extends AbstractController
             'controller_name' => 'ProStagesController', 'vueFormulaireAjout' => $vueFormulaireAjout
         ]);
     }
+      /**
+     * @Route("/modifierEntreprise/{id}", name="ProStages_modifierEntreprise")
+     */
+    public function modifierEntreprise(Request $requetteHttp, Entreprise $entreprise)
+    {
+        //Définition de l'object manager
+         $manager = $this->getDoctrine()->getManager();
+        // creation d'un objet formulaire pour saisir un stage
+        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
+                                 -> add ('nom',TextType::class)
+                                 -> add ('activite',TextType::class)
+                                 -> add ('adresse',TextType::class)
+                                 -> add ('site',UrlType::class)
+                                 -> getForm();
+        
+        //Enregistrer après soumission,les données dans l'objet $entreprise
+        $formulaireEntreprise -> handleRequest($requetteHttp);
+
+        if ($formulaireEntreprise -> isSubmitted() )
+        {
+            // enregistrer l'entreprise en BD
+            $manager -> persist($entreprise);
+            $manager->flush();
+
+            //redirection de l'utilisateur vers la page des entreprise
+            return $this->redirectToRoute('ProStages_entreprises'); 
+        }
+
+        //creation de la vue
+        $vueFormulaireEntreprise = $formulaireEntreprise -> createView();
+
+        return $this->render('ProStages/page_modifier_entreprise.html.twig', [
+            'controller_name' => 'ProStagesController', 'vueFormulaireEntreprise' => $vueFormulaireEntreprise
+        ]);
+    }
 }
