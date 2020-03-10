@@ -7,6 +7,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Email;
 
 
 use App\Entity\Stage;
@@ -146,7 +148,7 @@ class ProStagesController extends AbstractController
         //Enregistrer après soumission,les données dans l'objet $entreprise
         $formulaireAjout->handleRequest($request);
 
-        if($formulaireAjout->isSubmitted())
+        if($formulaireAjout->isSubmitted()&& $formulaireAjout -> isValid())
         {
             //On enregistre l'entrprise en BD
             $manager -> persist($ajout);
@@ -181,7 +183,7 @@ class ProStagesController extends AbstractController
         //Enregistrer après soumission,les données dans l'objet $entreprise
         $formulaireEntreprise -> handleRequest($requetteHttp);
 
-        if ($formulaireEntreprise -> isSubmitted() )
+        if ($formulaireEntreprise -> isSubmitted() && $formulaireEntreprise -> isValid()) 
         {
             // enregistrer l'entreprise en BD
             $manager -> persist($entreprise);

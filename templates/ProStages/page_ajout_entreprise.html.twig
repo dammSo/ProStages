@@ -25,31 +25,27 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-md-12">
-			{{ form_start (vueFormulaireAjout) }}
+			{{ form_start (vueFormulaireAjout , {'attr':{'novalidate':'novalidate'}})}}
 				<div>
 						{{ form_label (vueFormulaireAjout.nom) }} 
-						{{ form_errors (vueFormulaireAjout.nom) }}
 				<br> 
 						{{ form_widget (vueFormulaireAjout.nom, {'attr':{'placeholder':"Nom de l'entreprise"}}) }} 
 				</div>
 				<br>
 				<div>
 						{{ form_label (vueFormulaireAjout.activite) }} 
-						{{ form_errors (vueFormulaireAjout.activite) }} 
 				<br>
 						{{ form_widget (vueFormulaireAjout.activite, {'attr':{'placeholder':"Activité de l'entreprise"}}) }} 
 				</div>
 				<br>
 				<div>
-						{{ form_label (vueFormulaireAjout.adresse) }} 
-						{{ form_errors (vueFormulaireAjout.adresse) }}
+						{{ form_label (vueFormulaireAjout.adresse) }}
 				<br> 
 						{{ form_widget (vueFormulaireAjout.adresse, {'attr':{'placeholder':"Adresse de l'entreprise"}}) }} 
 				</div>
 				<br>
 				<div>
-						{{ form_label (vueFormulaireAjout.site) }} 
-						{{ form_errors (vueFormulaireAjout.site) }} 
+						{{ form_label (vueFormulaireAjout.site) }}
 				<br>
 						{{ form_widget (vueFormulaireAjout.site, {'attr':{'placeholder':"Lien du site de l'entreprise"}}) }} 
 					
