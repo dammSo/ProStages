@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints\Email;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Form\EntrepriseType;
 
 class ProStagesController extends AbstractController
 {
@@ -138,12 +139,7 @@ class ProStagesController extends AbstractController
          $manager = $this->getDoctrine()->getManager();
 
          //Création de l'objet formulaire
-         $formulaireAjout = $this -> createFormBuilder($ajout)
-                                  -> add('nom', TextType::class)
-                                  -> add('activite', TextType::class)
-                                  -> add('adresse', TextType::class)
-                                  -> add('site', UrlType::class)
-                                  -> getForm(); 
+         $formulaireAjout = $this -> createForm(EntrepriseType::class, $ajout);
         
         //Enregistrer après soumission,les données dans l'objet $entreprise
         $formulaireAjout->handleRequest($request);
@@ -173,12 +169,8 @@ class ProStagesController extends AbstractController
         //Définition de l'object manager
          $manager = $this->getDoctrine()->getManager();
         // creation d'un objet formulaire pour saisir un stage
-        $formulaireEntreprise = $this -> createFormBuilder($entreprise)
-                                 -> add ('nom',TextType::class)
-                                 -> add ('activite',TextType::class)
-                                 -> add ('adresse',TextType::class)
-                                 -> add ('site',UrlType::class)
-                                 -> getForm();
+        $formulaireEntreprise = $this -> createForm(EntrepriseType::class, $entreprise);
+
         
         //Enregistrer après soumission,les données dans l'objet $entreprise
         $formulaireEntreprise -> handleRequest($requetteHttp);
