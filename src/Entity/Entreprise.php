@@ -40,17 +40,15 @@ class Entreprise
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank(message="Veuillez renseigner l'adresse de l'entreprise.")
-     * @Assert\Regex(   
-     *      pattern="#[0-9]{5}(([,. ]?){1}[-a-zA-Zàâäéèêëïîôöùûüç']+)*#", 
-     *      message="Il semble que l'adresse soit incorrecte"
-     * )
+     * @Assert\Regex(pattern = "#^[1-9][0-9]{0,2}(bis| bis)? #", message = "Il y a une erreur sur le numéro de voie")
+     * @Assert\Regex(pattern = "# rue|impasse|allée|boulevard|voie|place|route #", message = "Il y a une erreur sur le type de voie")
+     * @Assert\Regex(pattern = "# [0-9]{5} #", message = "Il y a une erreur sur le code postal")
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez renseigner le site de l'entreprise.")
-     * @Assert\Url(message = "le format de l'URL doit être respecté !")
+     * @Assert\Url
      */
     private $site;
 
