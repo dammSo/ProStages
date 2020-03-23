@@ -145,5 +145,9 @@ class Entreprise
 
         return $this;
     }
-    
+
+    public function __toString()
+    {
+        return ($this->getId() .' - '. $this->getNom());
+    }
 }
