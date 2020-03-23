@@ -17,6 +17,13 @@
                                 {% block pageActive %} 
                                     
                                 {% endblock %}
+                                </li class="nav-item">
+                                    {% if is_granted('ROLE_USER') %}                      
+                                    <a class="nav-link" href="{{path('app_logout')}}" title="Déconnexion">Déconnexion</a>
+                                    {% else %}
+                                    <a class="nav-link" href="{{path('app_login')}}" title="Connexion">Connexion</a>
+                                    {% endif %}
+                                <li>
                             </ul>
                         </div>
                     </nav>
