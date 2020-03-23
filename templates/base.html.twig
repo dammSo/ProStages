@@ -19,9 +19,7 @@
                             <ul class="navbar-nav ml-md-auto">
                                 <li class="nav-item">
                                     {% if is_granted('ROLE_ADMIN') %}
-                                    {% block boutonAdminFormation %}
                                       <a class="nav-link" href="{{path('formation_index')}}">Gérer les formations</a>
-                                    {% endblock %}
                                     {% endif %}
                                 </li>
                                 {% if is_granted('ROLE_USER') %}

@@ -138,7 +138,7 @@ class Stage
         return $this;
     }
 
-    public function toStringPerso()
+    public function __toString()
     {
         return ($this->getId() .' - '. $this->getTitre());
     }
