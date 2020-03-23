@@ -94,4 +94,9 @@ class Formation
 
         return $this;
     }
+
+    public function toStringPerso()
+    {
+        return ($this->getId() .' - '. $this->getLibelle());
+    }
 }

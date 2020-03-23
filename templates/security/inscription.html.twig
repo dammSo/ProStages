@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire d'inscription{% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
+    </li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+    </li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutStage')}}">Ajouter un stage</a>
+    </li>
+    <li class="nav-item active">
+		<a class="nav-link" href="{{path('app_inscription')}}">Inscription</a>
+    </li>	
+{% endblock %}
+
+{% block titrePage %} {% endblock %} 
+{% block affichageTab %}  {% endblock %} 
+
+{% block baliseTr %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_start (vueformulaireUser)}}
+                <div>
+                    {{ form_row (vueformulaireUser.nom) }}
+                </div>
+                <div>
+                    {{ form_row (vueformulaireUser.prenom) }}
+                </div>
+                <div>
+                    {{ form_row (vueformulaireUser.email) }}
+                </div>
+                <div>
+                    {{ form_row (vueformulaireUser.password) }}
+                </div>
+                <br>
+                <button type="submit" class="btn btn-success"> S'inscrire </button>
+                {{ form_end (vueformulaireUser) }}        
+    
+            </div>
+        </div>
+    </div>
+{% endblock %} 
