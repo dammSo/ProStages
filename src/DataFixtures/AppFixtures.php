@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
         {
             $entreprise = new Entreprise();
             $entreprise->setNom($faker->company);
-            $entreprise->setActivite($faker->catchphrase);
+            $entreprise->setActivite($faker->text($maxNbChars = 25));
             $entreprise->setAdresse($faker->address);
             $entreprise->setSite($faker->url);
             $listeEntreprises[] = $entreprise;
@@ -57,10 +57,11 @@ class AppFixtures extends Fixture
 
         $nbStages = $faker->numberBetween(25,35);
 
-        for($i=0 ;$i<$nbStages ;$i++)
+        for($i=1 ;$i<$nbStages+1 ;$i++)
         {
             //Definition du stage
             $stage = new Stage();
+            $stage->setId($i);
             $stage->setTitre($faker->jobTitle);
             $stage->setDescription($faker->text($maxNbChars = 255));
             $stage->setMail($faker->safeEmail);

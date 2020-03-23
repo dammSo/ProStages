@@ -15,7 +15,6 @@ class Stage
 {
     /**
      * @ORM\Id()
-     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private $id;
@@ -36,7 +35,7 @@ class Stage
     private $mail;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="entreprises", cascade = {"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Entreprise", inversedBy="stages", cascade = {"persist"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\Valid
      */
@@ -56,6 +55,13 @@ class Stage
     public function getId(): ?int
     {
         return $this->id;
+    }
+    
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getTitre(): ?string

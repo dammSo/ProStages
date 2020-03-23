@@ -30,7 +30,7 @@ class ProStagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Recuperation des ressource en BD
-        $listeStages = $repositoryStage->findAll();
+        $listeStages = $repositoryStage->fetchStageEtEntreprise();
         /* 
         J'ai changé l'appel à la méthode fetchStageEtEntreprise afin de pouvoir quand meme avancer
         car il y a une erreur,je reviendrais dessus plus tard.
