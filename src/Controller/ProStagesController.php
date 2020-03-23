@@ -224,5 +224,4 @@ class ProStagesController extends AbstractController
         //Creation de la vue
         return $this->render('ProStages/page_ajout_stage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView()]);
     }
-
 }

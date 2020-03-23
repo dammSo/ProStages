@@ -1,6 +1,30 @@
-{% block title %}Connexion{% endblock %}
+{% extends 'base.html.twig' %}
 
-{% block contenu %}
+{% block title %} Page de connexion {% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
+    </li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutStage')}}">Ajouter un stage</a>
+    </li>	
+{% endblock %}
+
+{% block titrePage %} Identifiez-vous ! {% endblock %} 
+
+{% block affichageTab %}  {% endblock %} 
+
+{% block body %}
 <form method="post">
     {% if error %}
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
@@ -11,12 +35,14 @@
             Bienvenue <span class="badge badge-pill badge-dark">{{ app.user.prenom }} {{ app.user.nom }}</span>, <a href="{{ path('app_logout') }}">Déconnexion</a>
         </div>
     {% else %}
-        <h1 class="h3">Identifiez-vous</h1>
-        <label for="inputEmail">Email</label>
-        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
-        <label for="inputPassword">Mot de passe</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" required>
-
+        <div class="row">
+            <div class="col-md-12">
+                <label for="inputEmail">Email</label><br>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus><br>
+                <label for="inputPassword">Mot de passe</label><br>
+                <input type="password" name="password" id="inputPassword" class="form-control" required><br>
+            </div>
+        </div>
         <input type="hidden" name="_csrf_token"
             value="{{ csrf_token('authenticate') }}"
         >
