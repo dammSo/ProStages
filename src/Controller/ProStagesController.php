@@ -15,6 +15,8 @@ use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
 use App\Form\EntrepriseType;
+use App\Form\StageType;
+
 
 class ProStagesController extends AbstractController
 {
@@ -28,7 +30,11 @@ class ProStagesController extends AbstractController
         $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
 
         //Recuperation des ressource en BD
-        $listeStages = $repositoryStage->fetchStageEtEntreprise();
+        $listeStages = $repositoryStage->findAll();
+        /* 
+        J'ai changé l'appel à la méthode fetchStageEtEntreprise afin de pouvoir quand meme avancer
+        car il y a une erreur,je reviendrais dessus plus tard.
+        */ 
         
         //Envoi des données à la vue
         return $this->render('ProStages/index.html.twig', [
@@ -191,5 +197,35 @@ class ProStagesController extends AbstractController
         return $this->render('ProStages/page_modifier_entreprise.html.twig', [
             'controller_name' => 'ProStagesController', 'vueFormulaireEntreprise' => $vueFormulaireEntreprise
         ]);
+    }
+    /**
+     * @Route("/ajoutStage", name="ProStages_ajoutStage")
+     */
+    public function page_ajout_stage(Request $request)
+    {
+         //Création de la ressource vierge
+         $stage = new Stage();
+         
+         //Définition de l'object manager
+         $manager = $this->getDoctrine()->getManager();
+
+         //Création de l'objet formulaire
+         $formulaireStage = $this -> createForm(StageType::class, $stage);
+        
+        //Enregistrer après soumission,les données dans l'objet $stage
+        $formulaireStage->handleRequest($request);
+
+        if($formulaireStage->isSubmitted()&& $formulaireStage -> isValid())
+        {
+            //On enregistre l'entrprise en BD
+            $manager -> persist($stage);
+            $manager -> flush();
+
+            //On redirige l'utilisateur vers la page qui liste tous les stages
+            return $this->redirect($this->generateUrl('ProStages_acceuil'));
+        }
+        
+        //Creation de la vue
+        return $this->render('ProStages/page_ajout_stage.html.twig', ['vueFormulaireStage' => $formulaireStage->createView()]);
     }
 }

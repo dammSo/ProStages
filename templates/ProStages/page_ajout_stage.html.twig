@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajout d'un stage{% endblock %}
+
+{% block pageActive %}
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_acceuil')}}">Accueil<span class="sr-only">(current)</span></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_formations')}}">Par Formations</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_entreprises')}}">Par Entreprises</a>
+    </li>
+    <li class="nav-item">
+		<a class="nav-link" href="{{path('ProStages_ajoutEntreprise')}}">Ajouter une entreprise</a>
+    </li>
+    <li class="nav-item active">
+		<a class="nav-link" href="{{path('ProStages_ajoutStage')}}">Ajouter un stage</a>
+    </li>	
+{% endblock %}
+
+{% block titrePage %} Ajout d'un nouveau stage {% endblock %} 
+
+{% block affichageTab %}  {% endblock %} 
+
+{% block baliseTr %} 
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			{{ form_start (vueFormulaireStage)}}
+				<div>
+						{{ form_label (vueFormulaireStage.titre) }} 
+				<br> 
+						{{ form_widget (vueFormulaireStage.titre, {'attr':{'placeholder':"Titre du stage"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireStage.mail) }} 
+				<br>
+						{{ form_widget (vueFormulaireStage.mail, {'attr':{'placeholder':"Mail du contact"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireStage.description) }}
+				<br> 
+						{{ form_widget (vueFormulaireStage.description, {'attr':{'placeholder':"Entrez la description"}}) }} 
+				</div>
+				<br>
+				<div>
+						{{ form_label (vueFormulaireStage.entreprise) }}
+				<br>
+						{{ form_widget (vueFormulaireStage.entreprise) }} 
+					
+                </div>
+                <div>
+                        {{ form_label (vueFormulaireStage.formations) }}
+                <br>
+                        {{ form_widget (vueFormulaireStage.formations) }} 
+                
+                </div>
+				<br>
+				<div>
+					<button type="submit" class="btn btn-success">Créer</button>
+				</div>
+			{{ form_end (vueFormulaireStage) }}        
+
+		</div>
+	</div>
+</div>
+{% endblock %}

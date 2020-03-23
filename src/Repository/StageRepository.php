@@ -44,7 +44,7 @@ class StageRepository extends ServiceEntityRepository
                     'SELECT s
                     FROM App\Entity\Stage s
                     JOIN s.formations f
-                    WHERE f.nomComplet = :nomFormation');
+                    WHERE f.nomComplet = nomFormation');
 
                     $requete->setParameter('nomFormation',$nomFormation);
 
