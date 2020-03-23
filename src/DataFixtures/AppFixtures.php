@@ -8,6 +8,7 @@ use Doctrine\Common\Persistence\ObjectManager;
 use App\Entity\Stage;
 use App\Entity\Entreprise;
 use App\Entity\Formation;
+use App\Entity\User;
 
 class AppFixtures extends Fixture
 {
@@ -80,6 +81,25 @@ class AppFixtures extends Fixture
             
             $manager->persist($stage);
         }
+
+        //Creation des user
+        $Damien = new User();
+        $Damien->setPrenom('Damien');
+        $Damien->setNom('Serrano');
+        $Damien->setEmail('damienserranopro@gmail.com');
+        $Damien->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $Damien->setPassword('$2y$10$YlvtzFDYSq92PMjcy4PtsOFjscJ4lAT0ADNoj5pXhte2STD2Nj9GS');
+
+        $manager->persist($Damien);
+
+        $test = new User();
+        $test->setPrenom('test');
+        $test->setNom('test');
+        $test->setEmail('test@test.com');
+        $test->setRoles(['ROLE_USER']);
+        $test->setPassword('$2y$10$vYBdJ0u5NvzIShCcYfnqWugDxwY0ZlYlBynD35.kSgNaqaReRO15u');
+
+        $manager->persist($test);
         $manager->flush();
     }
 }

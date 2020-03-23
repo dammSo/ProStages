@@ -31,10 +31,6 @@ class ProStagesController extends AbstractController
 
         //Recuperation des ressource en BD
         $listeStages = $repositoryStage->fetchStageEtEntreprise();
-        /* 
-        J'ai changé l'appel à la méthode fetchStageEtEntreprise afin de pouvoir quand meme avancer
-        car il y a une erreur,je reviendrais dessus plus tard.
-        */ 
         
         //Envoi des données à la vue
         return $this->render('ProStages/index.html.twig', [
@@ -134,7 +130,7 @@ class ProStagesController extends AbstractController
         ]);
     }
     /**
-     * @Route("/ajoutEntreprise", name="ProStages_ajoutEntreprise")
+     * @Route("/admin/ajoutEntreprise", name="ProStages_ajoutEntreprise")
      */
     public function page_ajout_entreprise(Request $request)
     {
@@ -168,7 +164,7 @@ class ProStagesController extends AbstractController
         ]);
     }
       /**
-     * @Route("/modifierEntreprise/{id}", name="ProStages_modifierEntreprise")
+     * @Route("/admin/modifierEntreprise/{id}", name="ProStages_modifierEntreprise")
      */
     public function modifierEntreprise(Request $requetteHttp, Entreprise $entreprise)
     {
@@ -199,7 +195,7 @@ class ProStagesController extends AbstractController
         ]);
     }
     /**
-     * @Route("/ajoutStage", name="ProStages_ajoutStage")
+     * @Route("/user/ajoutStage", name="ProStages_ajoutStage")
      */
     public function page_ajout_stage(Request $request)
     {
